@@ -1,0 +1,26 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# JavaScript
+node_modules/
+dist/
+.vite/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs and system files
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+# Local evaluation data and videos
+evaluation/raw/
+evaluation/recordings/
+demo-recordings/
