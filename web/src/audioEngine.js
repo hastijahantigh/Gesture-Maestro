@@ -6,7 +6,10 @@ export class AudioEngine {
 
     this._expressionGain =
       new Tone.Gain(90 / 127).toDestination()
-
+    this._samplesReady = new Promise((resolve, reject) => {
+    this._markSamplesReady = resolve
+    this._markSamplesFailed = reject
+    })
     this._synth =new Tone.Sampler({
       urls: {
     A0: 'A0.mp3',
@@ -44,7 +47,10 @@ export class AudioEngine {
   release: 1,
 
   baseUrl:
-    'https://tonejs.github.io/audio/salamander/'
+    'https://tonejs.github.io/audio/salamander/',
+
+  onload: () => this._markSamplesReady(),
+  onerror: error => this._markSamplesFailed(error)
 
     }).connect(this._expressionGain)
   }
@@ -55,7 +61,7 @@ export class AudioEngine {
     }
 
     await Tone.start()
-    await Tone.loaded()
+    await this._samplesReady
     this._initialized = true
   }
 
