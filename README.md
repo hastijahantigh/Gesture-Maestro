@@ -129,6 +129,12 @@ gesture-maestro/
 └── THIRD_PARTY_NOTICES.md  # Third-party asset attribution
 ```
 
+
+
+> **Note:** The root `requirements.txt` belongs only to the early Python
+> prototype. The production web application uses the dependencies declared in
+> `web/package.json`.
+
 ## Python Prototype
 
 The repository includes an early Python prototype developed with OpenCV, MediaPipe, `pygame.midi`, and Mido.
