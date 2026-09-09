@@ -1,2 +1,8 @@
-numpy==2.5.1
-opencv-python==5.0.0.93
+# Dependencies for the legacy Python prototype only.
+# These packages are not required by the web application.
+
+numpy
+opencv-python
+mediapipe
+pygame
+mido
