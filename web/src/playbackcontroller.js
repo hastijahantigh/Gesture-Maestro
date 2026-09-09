@@ -8,7 +8,7 @@ export class PBC{
 
     reset(){
         this._tmpMult=1.0
-        this._expression=0.9
+        this._expression=90
     }
 
     setTempMult(value) {

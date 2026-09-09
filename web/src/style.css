@@ -71,6 +71,7 @@ main > p:first-of-type {
 }
 
 .camera-container {
+  position: relative;
   grid-column: 1 / -1;
   width: 100%;
   padding: 8px;
@@ -94,7 +95,17 @@ main > p:first-of-type {
   transform: scaleX(-1);
 }
 
-
+#landmark-overlay {
+  position: absolute;
+  inset : 8px;
+  z-index: 1;
+  display: block;
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
+  pointer-events: none;
+  border-radius: 18px;
+  transform: scaleX(-1);
+}
 .live-readouts {
   grid-column: 1 / -1;
   justify-self: center;
@@ -212,6 +223,9 @@ button:disabled {
   #camera {
     max-height: none;
   }
+
+
+
 
   .live-readouts {
     margin-top: -36px;

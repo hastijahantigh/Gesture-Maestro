@@ -10,7 +10,7 @@ import { AudioEngine } from './audioEngine.js'
 import { MidiPlayer } from './midiPlayer.js'
 import { SignalStabilizer } from './stabilizer.js'
 
-
+import { LandmarkOverlay } from './landmarkOverlay.js'
 
 
 const controller= new PBC()
@@ -175,6 +175,11 @@ document.querySelector('#app').innerHTML = `
     playsinline
     muted
   ></video>
+
+  <canvas
+    id="landmark-overlay"
+    aria-hidden="true"
+  ></canvas>
 </div>
 
 <section class="live-readouts">
@@ -215,15 +220,14 @@ const statusText = document.querySelector('#status')
 const tempoValue = document.querySelector('#tempo-value')
 const expressionValue = document.querySelector('#expression-value')
 const cameraVideo = document.querySelector('#camera')
+const landmrkCanvas=document.querySelector('#landmark-overlay')
 const pieceSelect = document.querySelector('#piece-select')
 
-const stopCameraButton =
-  document.querySelector('#stop-camera-button')
+const stopCameraButton = document.querySelector('#stop-camera-button')
 
 
 const onboarding = document.querySelector('#onboarding')
-const performanceInterface =
-  document.querySelector('#performance-interface')
+const performanceInterface =document.querySelector('#performance-interface')
 
 const introSteps = [
   ...document.querySelectorAll('.intro-step')
@@ -257,8 +261,7 @@ function showIntroStep(nextStep) {
   introSteps[activeIntroStep].classList.add('is-active')
   introProgressItems[activeIntroStep].classList.add('is-active')
 
-  const heading =
-    introSteps[activeIntroStep].querySelector('h1, h2')
+  const heading =introSteps[activeIntroStep].querySelector('h1, h2')
 
   heading.setAttribute('tabindex', '-1')
   heading.focus({ preventScroll: true })
@@ -321,7 +324,7 @@ enterPerformanceButton.addEventListener(
 
 const camera = new CameraController(cameraVideo)
 const handTracker = new HandTracker(cameraVideo)
-
+const landmarkOverlay= new LandmarkOverlay(landmrkCanvas,cameraVideo)
 let countdownActive = false
 
 function wait(milliseconds) {
@@ -423,6 +426,7 @@ console.log('Total notes:', totalNotes)
     await handTracker.initialize()
 
     handTracker.start((result) => {
+      landmarkOverlay.draw(result)
   const labels = []
 
   for (const categories of result.handedness) {
@@ -502,7 +506,8 @@ stopCameraButton.addEventListener('click', () => {
   midiPlayer.stop()
   handTracker.stop()
   camera.stop()
-  
+  landmarkOverlay.clear()
+
   startButton.disabled = false
   stopCameraButton.disabled = true
   pieceSelect.disabled=false
