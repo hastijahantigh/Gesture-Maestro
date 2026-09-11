@@ -162,3 +162,12 @@ Gesture Maestro is a completed interactive prototype. Its purpose is to explore 
 * Alexander Holm for the Salamander Grand Piano samples
 
 See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for piano-sample licensing and attribution.
+
+
+## Development Journey
+
+Gesture Maestro evolved from an early Python experiment into a deployable
+browser application. The complete technical journey—including architectural
+changes, unsuccessful approaches, audio and scheduling problems, interface
+iterations, final decisions, and limitations—is documented in
+[Development Journey](docs/DEVELOPMENT_JOURNEY.md).
