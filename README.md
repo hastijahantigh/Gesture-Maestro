@@ -152,7 +152,7 @@ The prototype was used to test the original interaction concept before the proje
 
 ## Project Status
 
-Gesture Maestro is a completed interactive prototype. Its purpose is to explore continuous, touch-free musical control and serve as a foundation for future work in music technology, human–computer interaction, and Music Information Retrieval.
+Gesture Maestro is a completed interactive prototype. Its purpose is to explore continuous, touch-free musical control and serve as a foundation for future work in music technology, human computer interaction, and Music Information Retrieval.
 
 ## Acknowledgements
 
@@ -167,7 +167,7 @@ See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for piano-sample licensing 
 ## Development Journey
 
 Gesture Maestro evolved from an early Python experiment into a deployable
-browser application. The complete technical journey—including architectural
+browser application. The complete technical journey including architectural
 changes, unsuccessful approaches, audio and scheduling problems, interface
-iterations, final decisions, and limitations—is documented in
+iterations, final decisions, and limitations is documented in
 [Development Journey](docs/DEVELOPMENT_JOURNEY.md).
