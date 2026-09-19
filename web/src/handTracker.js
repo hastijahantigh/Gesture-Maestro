@@ -18,12 +18,9 @@ export class HandTracker {
 
     const baseUrl = import.meta.env.BASE_URL
 
-    const vision = await FilesetResolver.forVisionTasks(
-      `${baseUrl}wasm`
-    )
+    const vision = await FilesetResolver.forVisionTasks( `${baseUrl}wasm` )
 
-    this._landmarker =
-      await HandLandmarker.createFromOptions(vision, {
+    this._landmarker =await HandLandmarker.createFromOptions(vision, {
         baseOptions: {
           modelAssetPath:
             `${baseUrl}models/hand_landmarker.task`,
@@ -32,7 +29,6 @@ export class HandTracker {
 
         runningMode: 'VIDEO',
         numHands: 2,
-
         minHandDetectionConfidence: 0.5,
         minHandPresenceConfidence: 0.5,
         minTrackingConfidence: 0.5
@@ -51,30 +47,19 @@ export class HandTracker {
     }
 
     const processFrame = () => {
-      const videoIsReady =
-        this._videoElement.readyState >= 2
+      const videoIsReady =this._videoElement.readyState >= 2
 
-      const frameIsNew =
-        this._videoElement.currentTime !==
-        this._lastVideoTime
+      const frameIsNew = this._videoElement.currentTime !==  this._lastVideoTime
 
       if (videoIsReady && frameIsNew) {
         const timestampMs = performance.now()
 
-        const result =
-          this._landmarker.detectForVideo(
-            this._videoElement,
-            timestampMs
-          )
-
-        this._lastVideoTime =
-          this._videoElement.currentTime
-
+        const result = this._landmarker.detectForVideo(  this._videoElement,timestampMs )
+        this._lastVideoTime = this._videoElement.currentTime
         onResults(result)
       }
 
-      this._animationFrameId =
-        requestAnimationFrame(processFrame)
+      this._animationFrameId = requestAnimationFrame(processFrame)
     }
 
     processFrame()
