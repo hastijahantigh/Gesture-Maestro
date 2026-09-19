@@ -76,7 +76,6 @@ export class AudioEngine {
 
     await Tone.start()
 
-    // This is a Promise, so do not add parentheses.
     await this._samplesReady
 
     this._initialized = true
