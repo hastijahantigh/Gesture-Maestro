@@ -2,10 +2,7 @@ export class PBC{
     constructor() {
         this._tmpMult=1.0
         this._expression=90
-
     }
-
-
     reset(){
         this._tmpMult=1.0
         this._expression=90
