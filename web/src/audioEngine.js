@@ -84,10 +84,7 @@ export class AudioEngine {
   setExpression(expression) {
     const gain = expression / 127
 
-    this._expressionGain.gain.rampTo(
-      gain,
-      0.05
-    )
+    this._expressionGain.gain.rampTo( gain, 0.05 )
   }
 
   playTestChord() {
@@ -97,18 +94,8 @@ export class AudioEngine {
     )
   }
 
-  scheduleNote(
-    noteName,
-    duration,
-    startTime,
-    velocity
-  ) {
-    this._synth.triggerAttackRelease(
-      noteName,
-      duration,
-      startTime,
-      velocity
-    )
+  scheduleNote(  noteName,duration, startTime, velocity) {
+    this._synth.triggerAttackRelease( noteName,  duration,  startTime, velocity )
   }
 
   stopAll() {
